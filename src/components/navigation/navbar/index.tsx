@@ -17,13 +17,18 @@ const Navbar = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/services">
-                  <p>Services</p>
+                <Link href="/blog">
+                  <p>Blog</p>
                 </Link>
               </li>
               <li>
-                <Link href="/contacts">
-                  <p>Contacts</p>
+                <Link href="/learn">
+                  <p>Learn</p>
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact">
+                  <p>Contact</p>
                 </Link>
               </li>
             </ul>
