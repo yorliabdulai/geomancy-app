@@ -17,7 +17,12 @@ export default function Home() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-
+         {posts.map((post, index) => (
+           <div>
+              <h2 className="text-2xl font-bold">{post.title}</h2>
+              <p>{post.excerpt}</p>
+           </div>
+         ))}
         </div>
       </div>
     </main>
