@@ -9,7 +9,6 @@ const posts = [
 ];
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="container mx-auto px-10 mb-8">
         <Head>
           <title>Geomancy Blog</title>
@@ -17,14 +16,18 @@ export default function Home() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-         {posts.map((post, index) => (
+          <div >
+           {posts.map((post, index) => (
            <div>
-              <h2 className="text-2xl font-bold">{post.title}</h2>
-              <p>{post.excerpt}</p>
+              {post.title}
+              {post.excerpt}
            </div>
-         ))}
+            ))}
+          </div>
+          <div className="lg:col-span-4 col-span-1">
+
+          </div>
         </div>
       </div>
-    </main>
   );
 }
