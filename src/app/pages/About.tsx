@@ -1,11 +1,11 @@
 import React from 'react'
 
-function ContantPage() {
+function About() {
   return (
     <div>
-      
+      About us
     </div>
   )
 }
 
-export default ContantPage
+export default About
