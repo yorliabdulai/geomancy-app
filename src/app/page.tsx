@@ -1,32 +1,27 @@
-import Head from "next/head";
-import Image from "next/image";
-import {PostCard, PostWidget, Categories} from "../components";
-
-const posts = [
-  {title: "What is Geomancy?", excerpt: "A brief introduction to the ancient art of Geomancy."},
-  {title: "How to Read Geomantic Figures", excerpt: "A guide to interpreting the sixteen geomantic figures."},
-  {title: "Geomantic Divination", excerpt: "A guide to practicing geomantic divination."},
-  {title: "Geomantic Tools", excerpt: "A list of tools used in geomancy."},
-];
 export default function Home() {
   return (
-      <div className="container mx-auto px-10 mb-8">
-        <Head>
-          <title>Geomancy Blog</title>
-          <meta name="description" content="" />
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          <div className="lg:col-span-8 col-span-1">
-           {posts.map((post, index) => ( <PostCard post={post} key={post.title}/> ))}
-          </div>
-          <div className="lg:col-span-4 col-span-1">
-            <div className="lg:sticky relative top-8">
-              <PostWidget />
-              <Categories />
-            </div>
-          </div>
-        </div>
+    <>
+      <div className="container mx-auto px-4">
+        <h1>Hello word</h1>
+        <p>This is a content to make our page longer</p>
+        <div className="w-full h-screen bg-green-300"></div>
+        <p>
+          What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the printing
+          and typesetting industry. Lorem Ipsum has been the industrys standard
+          dummy text ever since the 1500s, when an unknown printer took a galley
+          of type and scrambled it to make a type specimen book. It has survived
+          not only five centuries, but also the leap into electronic
+          typesetting, remaining essentially unchanged. It was popularised in
+          the 1960s with the release of Letraset sheets containing Lorem Ipsum
+          passages, and more recently with desktop publishing software like
+          Aldus PageMaker including versions of Lorem Ipsum. Why do we use it?
+          It is a long established fact that a reader will be distracted by the
+          readable content of a page when looking at its layout. The point of
+          using Lorem Ipsum is that it has a more-or-less normal distribution of
+          letters, as opposed to using Content here, content here, making it
+          look like readable English.
+        </p>
       </div>
+    </>
   );
 }
