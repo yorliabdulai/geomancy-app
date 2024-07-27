@@ -39,7 +39,7 @@ const Navbar = ({ toggle }: { toggle: () => void }) => {
                 </Link>
               </li>
               <li>
-                <Link href="/learn">
+                <Link href="/learn/Learn">
                   <p>Learn</p>
                 </Link>
               </li>

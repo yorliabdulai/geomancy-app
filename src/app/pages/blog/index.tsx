@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
-import {PostCard, PostWidget, Categories} from "../../components";
+import {PostCard, PostWidget, Categories} from "../../../components";
 
 const posts = [
   {title: "What is Geomancy?", excerpt: "A brief introduction to the ancient art of Geomancy."},
