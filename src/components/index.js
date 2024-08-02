@@ -10,6 +10,6 @@ export {default as Header} from '../components/Header';
 
 export { default as AdjacentPostCard } from '../components/AdjacentPostCard';
 export { default as FeaturedPostCard } from '../components/FeaturedPostCard';
-export { default as Comments } from './Comments';
-export { default as CommentsForm } from './CommentsForm';
+export { default as Comments } from '../components/Comments';
+export { default as CommentsForm } from '../components/CommentsForm';
 export { default as Loader } from './Loader';
