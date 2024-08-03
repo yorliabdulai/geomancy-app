@@ -5,7 +5,7 @@ import Navigation from "../components/navigation/index";
 const Layout = ({ children }) => (
   <>
     <Navigation />
-    <Header />
+    
     {children}
   </>
 );

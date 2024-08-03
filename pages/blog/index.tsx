@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
-import {PostCard, PostWidget, Categories} from "../../src/components";
+import {PostCard, PostWidget, Categories, Header} from "../../src/components";
 
 const posts = [
   {title: "What is Geomancy?", excerpt: "A brief introduction to the ancient art of Geomancy."},
@@ -16,6 +16,7 @@ export default function BlogPage() {
           <meta name="description" content="" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
+        <Header />
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div className="lg:col-span-8 col-span-1">
            {posts.map((post, index) => ( <PostCard post={post} key={post.title}/> ))}
