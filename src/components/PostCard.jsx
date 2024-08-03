@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image'; // Import the Image component from next/image
 import { grpahCMSImageLoader } from '../util';
 
 const PostCard = ({ post }) => {
@@ -10,9 +11,12 @@ const PostCard = ({ post }) => {
     <div className="bg-white shadow-lg rounded-lg p-0 lg:p-8 pb-12 mb-8">
       {featuredImageUrl ? (
         <div className="relative overflow-hidden shadow-md pb-80 mb-6">
-          <img
-            src={grpahCMSImageLoader({ src: featuredImageUrl })}
+          <Image
+            loader={grpahCMSImageLoader}
+            src={featuredImageUrl}
             alt={post.title}
+            width={800} // Specify width as a numeric value
+            height={400} // Specify height as a numeric value
             className="object-top absolute h-80 w-full object-cover shadow-lg rounded-t-lg lg:rounded-lg"
           />
         </div>
