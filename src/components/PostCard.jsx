@@ -6,7 +6,7 @@ import { grpahCMSImageLoader } from '../util';
 const PostCard = ({ post }) => {
   // Ensure post and post.featuredImage are defined before accessing their properties
   const featuredImageUrl = post?.featuredImage?.url;
-
+console.log(post)
   return (
     <div className="bg-white shadow-lg rounded-lg p-0 lg:p-8 pb-12 mb-8">
       {featuredImageUrl ? (

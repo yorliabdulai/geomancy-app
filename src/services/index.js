@@ -24,7 +24,7 @@ export const getPosts = async () => {
             featuredImage {
               url
             }
-            categories {
+            category {
               name
               slug
             }
@@ -42,7 +42,7 @@ export const getPosts = async () => {
 export const getCategories = async () => {
   const query = gql`
     query GetGategories {
-        categories {
+        category {
           name
           slug
         }
@@ -51,7 +51,7 @@ export const getCategories = async () => {
 
   const result = await request(graphqlAPI, query);
 
-  return result.categories;
+  return result.category;
 };
 
 export const getPostDetails = async (slug) => {
@@ -75,7 +75,7 @@ export const getPostDetails = async (slug) => {
         content {
           raw
         }
-        categories {
+        category {
           name
           slug
         }
@@ -88,11 +88,11 @@ export const getPostDetails = async (slug) => {
   return result.post;
 };
 
-export const getSimilarPosts = async (categories, slug) => {
+export const getSimilarPosts = async (category, slug) => {
   const query = gql`
-    query GetPostDetails($slug: String!, $categories: [String!]) {
+    query GetPostDetails($slug: String!, $category: [String!]) {
       posts(
-        where: {slug_not: $slug, AND: {categories_some: {slug_in: $categories}}}
+        where: {slug_not: $slug, AND: {category_some: {slug_in: $category}}}
         last: 3
       ) {
         title
@@ -104,7 +104,7 @@ export const getSimilarPosts = async (categories, slug) => {
       }
     }
   `;
-  const result = await request(graphqlAPI, query, { slug, categories });
+  const result = await request(graphqlAPI, query, { slug, category });
 
   return result.posts;
 };
@@ -147,7 +147,7 @@ export const getAdjacentPosts = async (createdAt, slug) => {
 export const getCategoryPost = async (slug) => {
   const query = gql`
     query GetCategoryPost($slug: String!) {
-      postsConnection(where: {categories_some: {slug: $slug}}) {
+      postsConnection(where: {category_some: {slug: $slug}}) {
         edges {
           cursor
           node {
@@ -166,7 +166,7 @@ export const getCategoryPost = async (slug) => {
             featuredImage {
               url
             }
-            categories {
+            category {
               name
               slug
             }
