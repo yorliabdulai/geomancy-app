@@ -4,7 +4,7 @@ export {default as Categories} from '../components/Categories';
 export {default as Header} from '../components/Header';
 
 //export { default as PostDetail } from './PostDetail';
-//export { default as Layout } from './Layout';
+export { default as Layout } from './Layout';
 
 //export { default as Author } from './Author';
 
