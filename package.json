@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tailwindcss/forms": "^0.5.7",
+    "axios": "^1.7.3",
     "graphql": "^16.9.0",
     "graphql-request": "^7.1.0",
     "html-react-parser": "^5.1.12",
