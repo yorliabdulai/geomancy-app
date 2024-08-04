@@ -1,6 +1,6 @@
-import AdminDashboard from '../components/AdminDashboard';
-import AdminOrders from '../components/AdminOrders';
-import withAdminAuth from '../utils/withAdminAuth';
+import AdminDashboard from '../../src/components/AdminDashboard';
+import AdminOrders from '../../src/components/AdminOrders';
+import withAdminAuth from '../../src/util/withAdminAuth';
 
 const AdminPage = () => {
   return (
