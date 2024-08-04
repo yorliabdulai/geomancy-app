@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import BookList from '../components/BookList';
-import Checkout from '../components/Checkout';
-import DeliveryStatus from '../components/DeliveryStatus';
+import BookList from '../../src/components/BookList';
+import Checkout from '../../src/components/Checkout';
+import DeliveryStatus from '../../src/components/DeliveryStatus';
 
 const Books = () => {
   const [selectedBook, setSelectedBook] = useState(null);
