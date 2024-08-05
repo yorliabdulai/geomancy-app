@@ -6,7 +6,6 @@ const AdminDashboard = () => {
   const [newBook, setNewBook] = useState({ title: '', author: '', price: '', description: '' });
 
   useEffect(() => {
-    // Fetch books from the server
     const fetchBooks = async () => {
       const response = await axios.get('/api/books');
       setBooks(response.data);
@@ -27,8 +26,10 @@ const AdminDashboard = () => {
 
   const handleDeleteBook = async (id) => {
     await axios.delete(`/api/books/${id}`);
-    setBooks(books.filter(book => book.id !== id));
+    setBooks(books.filter(book => book._id !== id));
   };
+
+  if (!books) return <div>Loading...</div>;
 
   return (
     <div className="p-4">
@@ -69,12 +70,12 @@ const AdminDashboard = () => {
       </form>
       <ul>
         {books.map(book => (
-          <li key={book.id} className="border p-4 mb-2">
+          <li key={book._id} className="border p-4 mb-2">
             <h2 className="text-xl font-bold">{book.title}</h2>
             <p>{book.author}</p>
             <p>{book.price}</p>
             <p>{book.description}</p>
-            <button onClick={() => handleDeleteBook(book.id)} className="bg-red-600 text-white px-4 py-2">Delete</button>
+            <button onClick={() => handleDeleteBook(book._id)} className="bg-red-600 text-white px-4 py-2">Delete</button>
           </li>
         ))}
       </ul>
