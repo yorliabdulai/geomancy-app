@@ -16,7 +16,6 @@ const GET_BOOKS = gql`
       }
       price
       stock
-      deliveryStatus
     }
   }
 `;
