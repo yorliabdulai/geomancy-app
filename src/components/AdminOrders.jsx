@@ -3,21 +3,35 @@ import axios from 'axios';
 
 const AdminOrders = () => {
   const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchOrders = async () => {
-      const response = await axios.get('/api/orders');
-      setOrders(response.data);
+      try {
+        const response = await axios.get('/api/orders');
+        setOrders(response.data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
     };
     fetchOrders();
   }, []);
 
   const handleUpdateOrder = async (id, status) => {
-    await axios.put(`/api/orders/${id}`, { status });
-    setOrders(orders.map(order => order._id === id ? { ...order, status } : order));
+    try {
+      await axios.put(`/api/orders/${id}`, { status });
+      setOrders(orders.map(order => order._id === id ? { ...order, status } : order));
+    } catch (err) {
+      setError(err.message);
+    }
   };
 
-  if (!orders) return <div>Loading...</div>;
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+  if (orders.length === 0) return <div>No orders available</div>;
 
   return (
     <div className="p-4">
