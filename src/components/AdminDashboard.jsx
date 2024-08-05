@@ -3,12 +3,20 @@ import axios from 'axios';
 
 const AdminDashboard = () => {
   const [books, setBooks] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [newBook, setNewBook] = useState({ title: '', author: '', price: '', description: '' });
 
   useEffect(() => {
     const fetchBooks = async () => {
-      const response = await axios.get('/api/books');
-      setBooks(response.data);
+      try {
+        const response = await axios.get('/api/books');
+        setBooks(response.data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
     };
     fetchBooks();
   }, []);
@@ -20,16 +28,26 @@ const AdminDashboard = () => {
 
   const handleAddBook = async (e) => {
     e.preventDefault();
-    const response = await axios.post('/api/books', newBook);
-    setBooks([...books, response.data]);
+    try {
+      const response = await axios.post('/api/books', newBook);
+      setBooks([...books, response.data]);
+    } catch (err) {
+      setError(err.message);
+    }
   };
 
   const handleDeleteBook = async (id) => {
-    await axios.delete(`/api/books/${id}`);
-    setBooks(books.filter(book => book._id !== id));
+    try {
+      await axios.delete(`/api/books/${id}`);
+      setBooks(books.filter(book => book._id !== id));
+    } catch (err) {
+      setError(err.message);
+    }
   };
 
-  if (!books) return <div>Loading...</div>;
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+  if (books.length === 0) return <div>No books available</div>;
 
   return (
     <div className="p-4">
