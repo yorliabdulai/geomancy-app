@@ -54,11 +54,6 @@ const Navbar = ({ toggle }: { toggle: () => void }) => {
                 </Link>
               </li>
               <li>
-                <Link href="/admin">
-                  <p>Admin</p>
-                </Link>
-              </li>
-              <li>
                 <Link href="/contact">
                   <p>Contact Us</p>
                 </Link>
