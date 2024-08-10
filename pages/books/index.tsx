@@ -1,46 +1,51 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { gql, useQuery } from '@apollo/client';
 import BookList from '../../src/components/BookList';
 import Checkout from '../../src/components/Checkout';
 import DeliveryStatus from '../../src/components/DeliveryStatus';
-
-// GraphCMS query to fetch books
-const GET_BOOKS = gql`
-  query {
-    books {
-      id
-      title
-      author
-      coverImage {
-        url
-      }
-      price
-      stock
-    }
-  }
-`;
+import { getBooks } from '../../src/services/books'
 
 const Books = () => {
   const [selectedBook, setSelectedBook] = useState(null);
   const [deliveryStatus, setDeliveryStatus] = useState(null);
-  
-  const { data, loading, error } = useQuery(GET_BOOKS);
+  const [books, setBooks] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error fetching books</p>;
+  useEffect(() => {
+    const fetchBooks = async () => {
+      try {
+        const booksData = await getBooks();
+        setBooks(booksData);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : String(err)); // Ensure error is a string
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBooks();
+  }, []);
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    console.error('Error fetching books:', error);
+    return <p>Error fetching books: {error}</p>; // Render error as string
+  }
+
+  if (!books || books.length === 0) {
+    return <p>No books available</p>;
+  }
 
   return (
     <div className="container mx-auto p-6">
       <h1 className="text-3xl font-bold mb-6">Books for Sale</h1>
-      <BookList 
-        books={data.books} 
-        setSelectedBook={setSelectedBook} 
-      />
+      <BookList books={books} setSelectedBook={setSelectedBook} />
       {selectedBook && (
-        <Checkout 
-          book={selectedBook} 
-          setDeliveryStatus={setDeliveryStatus} 
-        />
+        <Checkout book={selectedBook} setDeliveryStatus={setDeliveryStatus} />
       )}
       {deliveryStatus && <DeliveryStatus status={deliveryStatus} />}
     </div>

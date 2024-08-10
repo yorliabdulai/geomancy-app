@@ -1,4 +1,4 @@
-import { connectToDatabase } from '../../utils/mongodb';
+import { connectToDatabase } from '../../src/utils/mongodb';
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {

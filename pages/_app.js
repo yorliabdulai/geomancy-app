@@ -6,11 +6,9 @@ import { ApolloProvider } from '@apollo/client';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ApolloProvider client={client}>
     <Layout>
       <Component {...pageProps} />
     </Layout>
-    </ApolloProvider>
   );
 }
 

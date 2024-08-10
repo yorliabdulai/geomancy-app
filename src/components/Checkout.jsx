@@ -1,22 +1,20 @@
-// src/components/Checkout.jsx
 import React from 'react';
 import Script from 'next/script';
 
 const Checkout = ({ book, setDeliveryStatus }) => {
   const handlePayment = () => {
     const paystackHandler = window.PaystackPop.setup({
-      key: 'your-public-key', // Replace with your Paystack public key
-      email: 'customer-email@example.com', // Replace with customer email
+      key: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY,
+      email: 'customer-email@example.com', // Replace with actual customer email
       amount: book.price * 100, // Amount in kobo (1 USD = 100 kobo)
-      currency: 'GHS', // Set your currency
-      callback: function(response) {
-        // Handle payment response
+      currency: 'GHS',
+      callback: (response) => {
         setDeliveryStatus('Payment Successful');
         console.log(response);
       },
-      onClose: function() {
+      onClose: () => {
         alert('Transaction was not completed.');
-      }
+      },
     });
     paystackHandler.openIframe();
   };

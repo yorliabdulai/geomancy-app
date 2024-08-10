@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image'; // Import the Image component from next/image
-import { grpahCMSImageLoader } from '../util';
+import { grpahCMSImageLoader } from '../utils';
 
 const PostCard = ({ post }) => {
   // Ensure post and post.featuredImage are defined before accessing their properties
